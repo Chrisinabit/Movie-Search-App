@@ -16,7 +16,7 @@ export const useMovieSearch = (query: string, enabled: boolean = true) => {
       }
       return result
     },
-    enabled: enabled && query.length > 0,
+    enabled: enabled && query.length > 3,
     staleTime: 1000 * 60 * 5, // 5 minutes
   })
 }

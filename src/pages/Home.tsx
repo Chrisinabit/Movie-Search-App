@@ -3,10 +3,12 @@ import { useState, useEffect } from 'react'
 import { usePopularMovies, useInfiniteMovieSearch } from '../lib/hooks/useMovies';
 import MovieGrid from '../components/movieGrid'
 import type { Movie } from '../types/movie'
+import Loader from '../components/loader';
 
 const MovieSearch: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [debouncedQuery, setDebouncedQuery] = useState('')
+   const [loading] = useState(false);
 
   // Debounce search query to avoid too many API calls
   useEffect(() => {
@@ -46,6 +48,7 @@ const {
 
   return (
     <div className="min-h-screen">
+       {loading ? <Loader /> : null}
       {/* Header Section */}
       <div>
         <div className="max-w-7xl mx-auto px-4 py-8">
